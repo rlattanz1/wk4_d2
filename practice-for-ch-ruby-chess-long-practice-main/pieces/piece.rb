@@ -1,6 +1,8 @@
+require_relative '../board.rb'
 
 class Piece
 attr_reader :color, :board, :position
+attr_accessor :position
     def initialize(color, board, position)
         #determine turn
         @color = color
@@ -17,15 +19,7 @@ attr_reader :color, :board, :position
     end
 
     def valid_moves
-        # @boards will have getter, rows, to call the 2d board array
-        moves=[]
-        @board.rows.each_index do |row|
-            row.each_index do |col|
-                moves << [row,col]
-            end
-        end
-        moves
-    end
+
 
     def
 
