@@ -1,5 +1,5 @@
+# require_relative './pieces/piece.rb'
 
-# require './pieces/piece.rb'
 class Board
 
     attr_reader :rows, :null_piece
@@ -31,7 +31,7 @@ class Board
     def move_piece(color, start_pos, end_pos)
         r, c = end_pos
         if self[start_pos] != @null_piece && r.between?(0,7) && c.between?(0,7)
-            self[end_pos]= self[start_pos]
+            self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
             self[start_pos]= '@null_piece'
         else
             raise "invalid move"
