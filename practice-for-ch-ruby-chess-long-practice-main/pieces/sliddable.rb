@@ -14,6 +14,11 @@ module Slideable
     end
 
     def moves
+        moves_arr = []
+        move_dirs.each do |m_dir|
+            dx, dy = m_dir
+            moves_arr.concat(grow_unblocked_moves_in_dir(dx, dy))
+        end
     end
 
     #north_west
