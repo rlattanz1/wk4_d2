@@ -49,8 +49,11 @@ class Pawn < Piece
             side_moves.each do |diag|
                 x, y = diag 
                 check_pos = [r+x,c+y]
-                if board[check_pos].color != color && !board[check_pos].empty?
-                    diag_pos << check_pos
+                if valid_spot?(check_pos)
+                    if board[check_pos].color != color && !board[check_pos].empty?
+                        
+                        diag_pos << check_pos
+                    end
                 end
             end
         diag_pos

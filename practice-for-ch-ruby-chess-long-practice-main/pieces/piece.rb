@@ -13,11 +13,11 @@ attr_accessor :position
 
 
     def to_s
-        self.color
+        self.symbol
     end
 
     def empty?
-        self.color == :np
+        self.symbol == :null
     end
 
     def valid_spot?(pos)

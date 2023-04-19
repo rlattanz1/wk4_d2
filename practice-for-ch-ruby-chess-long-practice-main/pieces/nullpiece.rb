@@ -12,10 +12,8 @@ class NullPiece < Piece
     end
 
     def symbol
-        :np
+        :null
     end
 
 end
 
-test = NullPiece.instance
-p test.symbolpieces/pawn.rb

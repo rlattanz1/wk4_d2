@@ -16,7 +16,7 @@ class King < Piece
     protected
 
     def move_diffs
-        moves_arr = [[0, 1],[0, -1],[0, 1],[0, -1],[1, 0],[-1, 0],[1, 0],[-1, 0]]
+        moves_arr = [[0, 1],[0, -1],[1, 1],[1, -1],[1, 0],[-1, 1],[-1, 0],[-1, -1]]
     end
 
 end

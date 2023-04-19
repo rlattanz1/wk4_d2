@@ -13,7 +13,6 @@ class Board
     KINGS = [[0,4]]
     QUEEN = [[0,3]]
     ROOKS = [[0,0],[0,7]]
-    def self.board_setup()
         # hash {knight =>[[0,0]]}
         
     # pawn: entire 1 and 6 row 
@@ -27,10 +26,10 @@ class Board
                     @rows[index][inx]  = @null_piece
                 end
                 if index == 1 
-                    @rows[index][inx] == Pawn.new(:black,self, [index,inx])
+                    @rows[index][inx] = Pawn.new(:black,self, [index,inx])
                 end
                 if index == 6
-                    @rows[index][inx] == Pawn.new(:white,self, [index,inx])
+                    @rows[index][inx] = Pawn.new(:white,self, [index,inx])
                 end
             end
         end
@@ -44,7 +43,7 @@ class Board
             @rows[x][y] = Queen.new(:black,self,position)
             @rows[x+7][y] = Queen.new(:white,self,[x+7,y])
         end
-        KING.each do |position|
+        KINGS.each do |position|
             x, y = position
             @rows[x][y] = King.new(:black,self,position)
             @rows[x+7][y] = King.new(:white,self,[x+7,y])
@@ -77,7 +76,7 @@ class Board
         r, c = end_pos
         if self[start_pos] != @null_piece && r.between?(0,7) && c.between?(0,7)
             self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
-            self[start_pos]= Piece.new(:np, self, start_pos)
+            self[start_pos]= @null_piece
             self[end_pos].position = end_pos
         else
             raise "invalid move"
@@ -95,6 +94,21 @@ class Board
     end
 
 end
-end
 test = Board.new
+#pawn
+test.move_piece(:black,[1,0],[2,0])
+test.move_piece(:black,[1,1],[2,1])
+test.move_piece(:black,[1,2],[2,2])
+test.move_piece(:black,[1,3],[2,3])
+test.move_piece(:black,[1,4],[2,4])
+test.move_piece(:black,[1,5],[2,5])
+test.move_piece(:black,[1,6],[2,6])
+test.render
+p test[[6,0]].moves
+p test[[0,1]].moves #knight
+p test[[0,6]].moves #knight
+p test[[0,0]].moves #rook 
+p test[[0,2]].moves #bishop
+p test[[0,3]].moves #queen
+p test[[0,4]].moves #king
 
