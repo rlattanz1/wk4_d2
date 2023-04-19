@@ -21,9 +21,7 @@ attr_accessor :position
     def valid_moves
 
 
-    def
-
-
+    end
 
 
 
