@@ -6,7 +6,9 @@ class Pawn < Piece
         super #this will take in all arguements
     end
 
-
+    def symbol 
+        :pawn
+    end
     def moves
         row, col = position
         moves=[]
@@ -55,3 +57,4 @@ class Pawn < Piece
     end
 
 end
+

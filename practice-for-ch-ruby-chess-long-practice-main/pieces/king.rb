@@ -10,7 +10,7 @@ class King < Piece
     end
 
     def symbol
-
+        :king
     end
 
     protected

@@ -1,11 +1,10 @@
 require 'singleton'
-
-class NullPiece
+require_relative 'piece'
+class NullPiece < Piece
 
     include Singleton
 
-    def initialize(color,board,position)
-        super #this will take in all arguements
+    def initialize
     end
 
     def moves
@@ -13,7 +12,10 @@ class NullPiece
     end
 
     def symbol
-
+        :np
     end
 
 end
+
+test = NullPiece.instance
+p test.symbolpieces/pawn.rb

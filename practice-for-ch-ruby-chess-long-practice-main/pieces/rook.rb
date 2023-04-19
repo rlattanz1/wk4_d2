@@ -9,7 +9,7 @@ class Rook < Piece
     end
 
     def symbol
-
+        :rook
     end
 
     private

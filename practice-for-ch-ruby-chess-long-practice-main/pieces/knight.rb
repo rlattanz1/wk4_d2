@@ -11,7 +11,7 @@ class Knight < Piece
 
 
     def symbol
-
+        :knight
     end
 
     protected

@@ -9,7 +9,7 @@ class Bishop < Piece
     end
 
     def symbol
-
+        :bishop
     end
 
     private

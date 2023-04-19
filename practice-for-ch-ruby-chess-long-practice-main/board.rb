@@ -1,22 +1,66 @@
 require_relative './pieces/piece.rb'
 require_relative './pieces/queen.rb'
-require 'byebug'
+require_relative './pieces/bishop.rb'
+require_relative './pieces/rook.rb'
+require_relative './pieces/pawn.rb'
+require_relative './pieces/king.rb'
+require_relative './pieces/knight.rb'
+require_relative './pieces/nullpiece.rb'
 class Board
-
+    KNIGHTS = [[0,1],[0,6]]
+    BISHOPS=[[0,2],[0,5]] 
+    #bishop.each do |position|
+    KINGS = [[0,4]]
+    QUEEN = [[0,3]]
+    ROOKS = [[0,0],[0,7]]
+    def self.board_setup()
+        # hash {knight =>[[0,0]]}
+        
+    # pawn: entire 1 and 6 row 
     attr_reader :rows, :null_piece
     def initialize()
+        @null_piece = NullPiece.instance
         @rows = Array.new(8) {Array.new(8)}
         @rows.each_with_index do |row,index|
             row.each_with_index do |col, inx|
                 if index.between?(2,5)
-                    @rows[index][inx]  = Piece.new(:np, self, [index,inx])
-                else
-                    @rows[index][inx] = Queen.new(:black, self, [index,inx])
+                    @rows[index][inx]  = @null_piece
+                end
+                if index == 1 
+                    @rows[index][inx] == Pawn.new(:black,self, [index,inx])
+                end
+                if index == 6
+                    @rows[index][inx] == Pawn.new(:white,self, [index,inx])
                 end
             end
         end
+        KNIGHTS.each do |position|
+            x, y = position
+            @rows[x][y] = Knight.new(:black,self,position)
+            @rows[x+7][y] = Knight.new(:white,self,[x+7,y])
+        end
+        QUEEN.each do |position|
+            x, y = position
+            @rows[x][y] = Queen.new(:black,self,position)
+            @rows[x+7][y] = Queen.new(:white,self,[x+7,y])
+        end
+        KING.each do |position|
+            x, y = position
+            @rows[x][y] = King.new(:black,self,position)
+            @rows[x+7][y] = King.new(:white,self,[x+7,y])
+        end
+        BISHOPS.each do |position|
+            x, y = position
+            @rows[x][y] = Bishop.new(:black,self,position)
+            @rows[x+7][y] = Bishop.new(:white,self,[x+7,y])
+        end
+        ROOKS.each do |position|
+            x, y = position
+            @rows[x][y] = Rook.new(:black,self,position)
+            @rows[x+7][y] = Rook.new(:white,self,[x+7,y])
+        end
 
-        # @null_piece = NullPiece.new
+    
     end
 
     def [](pos)
@@ -51,11 +95,6 @@ class Board
     end
 
 end
-
+end
 test = Board.new
-test.render
-# @rows[[1,0]].moves
-test.move_piece(:black,[0,0],[4,4])
-test.render
-# p test.valid_spot?([-1,-2])
-p test[[1,0]].moves
+
