@@ -23,27 +23,26 @@ module Slidable
     end
 
     #north_west
-    def valid_spot?(pos)
-        r, c = pos
-        r.between?(0, 7) && c.between?(0, 7)
-    end
 
+    private
+    
     def grow_unblocked_moves_in_dir(dx,dy) #(1,0)
         pos_arr=[]
 
-        # condition = false
-        #until board spot is not empty(same color or different), valid_moves (valid of board)
-        pos_check = position
-        pos_check = [pos_check[0]+dx, pos_check[1]+dy]
+        pos_check = [position[0]+dx, position[1]+dy]
         check_board = @board[pos_check]
-        debugger
-        until !check_board.empty? || !check_board.valid_spot?(pos_check)
-            pos_check = [pos_check[0]+dx, pos_check[1]+dy]
-            pos_arr << pos_check
-        end
-        if pos_arr.last == self.color
-            pos_arr.pop
-        end
+            until !check_board.empty? || !check_board.valid_spot?(pos_check)
+                pos_arr << pos_check
+                pos_check = [pos_check[0]+dx, pos_check[1]+dy]
+                check_board = @board[pos_check]
+
+            end
+            if pos_arr.last == self.color
+                pos_arr.pop
+            else
+                pos_arr
+            end
+
     pos_arr
     end
 

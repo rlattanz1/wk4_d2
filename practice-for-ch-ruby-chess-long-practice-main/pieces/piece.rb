@@ -10,12 +10,19 @@ attr_accessor :position
         @position = position
     end
 
-    def to_s(piece_instance)
-        piece_instance.symbol
+
+
+    def to_s
+        self.color
     end
 
     def empty?
         self.color == :np
+    end
+
+    def valid_spot?(pos)
+        r, c = pos
+        r.between?(0, 7) && c.between?(0, 7)
     end
 
     def valid_moves

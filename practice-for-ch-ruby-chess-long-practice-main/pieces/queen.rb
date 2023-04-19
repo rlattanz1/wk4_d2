@@ -5,19 +5,21 @@ class Queen < Piece
     include Slidable
 
     def initialize(color,board,position)
-        super #this will take in all arguements 
+        super #this will take in all arguements
     end
 
-    def move_dirs 
-        #using slidable functions 
+    def symbol
+
+    end
+
+    private
+    
+    def move_dirs
+        #using slidable functions
         dirs = []
         dirs += horizontal_dirs + diagonal_dirs
-        
-        dirs 
+
+        dirs
     end
 
 end
-
-
-
-

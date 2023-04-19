@@ -34,7 +34,7 @@ class Board
         if self[start_pos] != @null_piece && r.between?(0,7) && c.between?(0,7)
             self[start_pos], self[end_pos] = self[end_pos], self[start_pos]
             self[start_pos]= Piece.new(:np, self, start_pos)
-            self[end_pos].position = end_pos 
+            self[end_pos].position = end_pos
         else
             raise "invalid move"
         end
@@ -43,18 +43,19 @@ class Board
     def valid_pos(pos)
 
     end
+
     def render
         rows.each do |row|
-            puts row.map(&:color).join(' ')
+            p row.map {|ele| ele.to_s}.join(' ')
         end
     end
 
 end
 
-test = Board.new 
+test = Board.new
 test.render
 # @rows[[1,0]].moves
 test.move_piece(:black,[0,0],[4,4])
 test.render
 # p test.valid_spot?([-1,-2])
-p test[[4,4]].moves
+p test[[1,0]].moves
