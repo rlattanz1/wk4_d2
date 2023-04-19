@@ -6,7 +6,7 @@ attr_accessor :position
     def initialize(color, board, position)
         #determine turn
         @color = color
-        @board = Board.new
+        @board = board
         @position = position
     end
 
@@ -15,7 +15,7 @@ attr_accessor :position
     end
 
     def empty?
-        self.symbol == :np
+        self.color == :np
     end
 
     def valid_moves

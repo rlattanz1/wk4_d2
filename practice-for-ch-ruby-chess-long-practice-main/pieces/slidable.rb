@@ -1,6 +1,6 @@
 
 
-module Slideable
+module Slidable
     HORIZONTAL_DIRS= [[1, 0], [-1, 0], [0, 1], [0, -1]]
     DIAGONAL_DIRS= [[1, 1], [-1, -1], [-1, 1], [1, -1]]
 
@@ -19,6 +19,7 @@ module Slideable
             dx, dy = m_dir
             moves_arr.concat(grow_unblocked_moves_in_dir(dx, dy))
         end
+        moves_arr
     end
 
     #north_west
@@ -32,10 +33,10 @@ module Slideable
 
         # condition = false
         #until board spot is not empty(same color or different), valid_moves (valid of board)
-
         pos_check = position
         pos_check = [pos_check[0]+dx, pos_check[1]+dy]
         check_board = @board[pos_check]
+        debugger
         until !check_board.empty? || !check_board.valid_spot?(pos_check)
             pos_check = [pos_check[0]+dx, pos_check[1]+dy]
             pos_arr << pos_check
