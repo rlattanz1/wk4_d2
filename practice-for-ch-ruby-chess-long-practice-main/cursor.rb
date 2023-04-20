@@ -1,5 +1,5 @@
 require "io/console"
-
+require_relative "board"
 KEYMAP = {
   " " => :space,
   "h" => :left,
@@ -76,6 +76,8 @@ class Cursor
   end
 
   def handle_key(key)
+    case key
+      
   end
 
   def update_pos(diff)
